@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CUBE//UNBOUND</title>
+<meta name="description" content="What if every square on a Rubik's Cube could move on its own?">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&family=Unbounded:wght@400;700;800&display=swap">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app">
+  <div id="stage" aria-label="3D cube. Drag a tile to twist it, drag the background to orbit."></div>
+
+  <header class="brand">
+    <h1>CUBE<span>//</span>UNBOUND</h1>
+    <p>What if every square could move on its own?</p>
+  </header>
+
+  <section class="meter" aria-label="Weirdness meter">
+    <div class="meter-top">
+      <span class="meter-label">Weirdness</span>
+      <span class="meter-pct" aria-live="polite"><span id="pct">0</span><small>%</small></span>
+    </div>
+    <div class="meter-bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="bar">
+      <i id="fill"></i>
+      <b style="left:25%"></b><b style="left:50%"></b><b style="left:75%"></b>
+    </div>
+    <p class="meter-status lvl-0" id="status">Suspiciously Normal</p>
+    <p class="quip" id="quip"></p>
+  </section>
+
+  <div class="bottom">
+    <p class="hint" id="hint" aria-live="polite">Click and drag a tile to twist it. Or press BREAK REALITY and see what happens.</p>
+    <nav class="dock" aria-label="Actions">
+      <button type="button" class="act mix" id="btn-mix">Mix it up</button>
+      <button type="button" class="act break" id="btn-break">Break reality</button>
+      <button type="button" class="act color" id="btn-color">Color chaos<em id="sel-count"></em></button>
+      <span class="dock-sep" aria-hidden="true"></span>
+      <button type="button" class="mini" id="btn-undo" disabled aria-label="Undo (Ctrl+Z)" title="Undo (Ctrl+Z)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>
+        Undo
+      </button>
+      <button type="button" class="mini" id="btn-reset" aria-label="Reset to the original cube" title="Reset to the original cube">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+        Reset
+      </button>
+    </nav>
+  </div>
+  <div id="fx"></div>
+</div>
+
+<!-- Three.js as plain ES modules from a CDN: no install, no build step. -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
